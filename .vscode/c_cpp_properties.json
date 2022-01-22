@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:/Users/GUI/Desktop/3ds/sdl-study/Deps/SDL2/include",
+                "C:/MinGW/include",
+                "C:/Users/GUI/Desktop/3ds/sdl-study",
+                "C:/Users/GUI/Desktop/3ds/sdl-study/Deps/glm",
+                "C:/Users/GUI/Desktop/3ds/sdl-study/Deps/glext/include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.16299.0",
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x64"
+        }
+    ],
+    "version": 4
+}
