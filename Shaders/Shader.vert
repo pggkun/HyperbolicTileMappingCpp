@@ -11,7 +11,7 @@ out vec3 vtxView;
 uniform mat4 mdlvMtx;
 uniform mat4 projMtx;
 
-void main()
+vec4 projection()
 {
     vec4 Pe = vec4(inPos, 1.0);
     vec4 P0 = vec4(0.0, -1.0, 0.0, 1.0);
@@ -19,9 +19,12 @@ void main()
     float t = P0.y/V.y;
     float pX = P0.x + (t * V.x);
     float pZ = P0.z + (t * V.z);
-    vec4 projectedP = vec4(pX, 0.0, pZ, 1.0);
-    
-    vec4 pos = mdlvMtx * projectedP;
+    return vec4(pX, 0.0, pZ, 1.0);
+}
+
+void main()
+{
+    vec4 pos = mdlvMtx * projection();
     vtxView = -pos.xyz;
     gl_Position = projMtx * pos;
 
