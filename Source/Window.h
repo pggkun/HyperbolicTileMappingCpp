@@ -31,8 +31,7 @@ class Window
         int mouseX;
         int mouseY;
 
-        void init(const char *title, u32 Width, u32 Height);
-        void run();
-        void exit();
+        void Init(const char *title, u32 Width, u32 Height);
+        void Run();
 };
 #endif

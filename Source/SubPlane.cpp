@@ -4,6 +4,22 @@
 #include <stb_image.h>
 #endif
 
+SubdividedPlane::SubdividedPlane()
+{
+    this->LoadVertex();
+    kleinToMinkowski(this->vertexList, 24);
+    this->LoadShaders();
+    this->GetUniformLocations();
+    this->GenerateAndBindBuffers();
+}
+
+SubdividedPlane::~SubdividedPlane()
+{
+    glDeleteBuffers(1, &this->vbo);
+    glDeleteVertexArrays(1, &this->vao);
+    glDeleteTextures(1, &this->tex);
+}
+
 GLuint SubdividedPlane::CreateAndCompileShader(GLenum type, const char *source)
 {
     GLint success;
@@ -25,7 +41,6 @@ GLuint SubdividedPlane::CreateAndCompileShader(GLenum type, const char *source)
         glDeleteShader(handle);
         return 0;
     }
-
     return handle;
 }
 
@@ -161,15 +176,6 @@ void SubdividedPlane::UpdateUniforms(glm::vec4 cam, glm::vec3 light, glm::vec3 a
     glUniform3f(this->localDiffuse, diffuse.x, diffuse.y, diffuse.z);
     glUniform4f(this->localSpecular, specular.x, specular.y, specular.z, 20.0f);
     glUniform1i(this->localTexDiffuse, 0);
-}
-
-void SubdividedPlane::Init()
-{
-    this->LoadVertex();
-    kleinToMinkowski(this->vertexList, 24);
-    this->LoadShaders();
-    this->GetUniformLocations();
-    this->GenerateAndBindBuffers();
 }
 
 void SubdividedPlane::Draw()
