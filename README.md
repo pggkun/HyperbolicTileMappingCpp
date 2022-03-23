@@ -4,7 +4,7 @@ Implementation of [Hyperbolic Tile Mapping](https://github.com/paulogcosta/Hyper
 ## Build
 Using Windows, make sure you have [msys2](https://www.msys2.org/) installed.
 
-then open the folder containing the makefile and run the command:
+Open the folder containing the makefile and run the command:
 ```
 make
 ```
