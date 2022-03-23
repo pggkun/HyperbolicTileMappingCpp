@@ -1,8 +1,12 @@
 #ifndef _SUBPLANE_H_
 #define _SUBPLANE_H_
 
-#include <gl/glcorearb.h>
-#include <gl/glext.h>
+//#include <gl/glcorearb.h>
+#ifndef GLEW_STATIC
+#define GLEW_STATIC
+#include "GLEW/glew.h"
+#endif
+
 #include "HyperMath.h"
 #include <iostream>
 #include <fstream>

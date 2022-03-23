@@ -3,7 +3,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 #endif
-
+#include <stdio.h>
 SubdividedPlane::SubdividedPlane()
 {
     this->LoadVertex();
@@ -24,7 +24,6 @@ GLuint SubdividedPlane::CreateAndCompileShader(GLenum type, const char *source)
 {
     GLint success;
     GLchar msg[512];
-
     GLuint handle = glCreateShader(type);
     if (!handle)
     {
@@ -34,7 +33,6 @@ GLuint SubdividedPlane::CreateAndCompileShader(GLenum type, const char *source)
     glShaderSource(handle, 1, &content, nullptr);
     glCompileShader(handle);
     glGetShaderiv(handle, GL_COMPILE_STATUS, &success);
-
     if (success == GL_FALSE)
     {
         glGetShaderInfoLog(handle, sizeof(msg), nullptr, msg);
@@ -51,9 +49,7 @@ void SubdividedPlane::LoadShaders()
     this->program = glCreateProgram();
     glAttachShader(this->program, vsh);
     glAttachShader(this->program, fsh);
-
     glLinkProgram(this->program);
-
     GLint success;
     glGetProgramiv(this->program, GL_LINK_STATUS, &success);
     if (success == GL_FALSE)

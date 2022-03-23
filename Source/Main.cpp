@@ -1,7 +1,7 @@
 #include "Window.h"
 #include "Chunk.h"
 #include "HyperMath.h"
-
+#include <stdio.h>
 #define WINDOW_TITLE "OpenGL SDL2 Hyperbolic Plane"
 #define WIDTH 640
 #define HEIGHT 360
@@ -9,16 +9,14 @@
 int main(int ArgCount, char **Args)
 {
     Window *window = new Window;
-
     window->Init(WINDOW_TITLE, WIDTH, HEIGHT);
+    GLenum err = glewInit();
     glm::vec4 cam(45.0f * TAU / 360.0f, (float)WIDTH / (float)HEIGHT, 0.01f, 1000.0f);
     glm::vec3 light(0.0f, 0.5f, 0.0f);
     glm::vec3 ambient(0.2f, 0.2f, 0.2f);
     glm::vec3 diffuse(0.9f, 0.9f, 0.9f);
-    glm::vec3 specular(0.1f, 0.1f, 0.1f);
-    
+    glm::vec3 specular(0.7f, 0.7f, 0.7f);
     Chunk *chunk = new Chunk(0, 0, cam, light, ambient, diffuse, specular);
-
     float moveSpeed = 0.01f;
     glViewport(0, 0, WIDTH, HEIGHT);
     while (window->Running)

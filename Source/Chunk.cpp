@@ -1,10 +1,11 @@
 #include "Chunk.h"
+#include <stdio.h>
+
 Chunk::Chunk(float hx, float hy, glm::vec4 cam, glm::vec3 light, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular)
 {
     planes.clear();
     x = hx;
     y = hy;
-
     SubdividedPlane *plane = new SubdividedPlane;
     plane->ApplyTexture("Textures/center.png");
     plane->UpdateUniforms(cam, light, ambient, diffuse, specular);
